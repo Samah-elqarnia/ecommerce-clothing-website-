@@ -1,0 +1,113 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 72px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(248, 200, 220, 0.3);
+    box-shadow: 0 2px 24px rgba(248, 200, 220, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #3E2C2C, #c47e9e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.04em;
+}
+
+.navbar-badge {
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, rgba(248, 200, 220, 0.3), rgba(245, 230, 211, 0.3));
+    border: 1px solid rgba(248, 200, 220, 0.5);
+    color: #c47e9e;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.nav-logo {
+    height: 36px;
+    width: auto;
+    opacity: 0;
+    /* Hide since we show brand text */
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-profile-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(248, 200, 220, 0.15), rgba(245, 230, 211, 0.15));
+    border: 1px solid rgba(248, 200, 220, 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.navbar-profile-wrapper:hover {
+    background: linear-gradient(135deg, rgba(248, 200, 220, 0.3), rgba(245, 230, 211, 0.3));
+}
+
+.navbar-profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-profile-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--brown);
+}
+
+.navbar-profile-role {
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    color: var(--text-light);
+}
+
+.nav-profile {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid rgba(248, 200, 220, 0.5);
+    object-fit: cover;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .navbar-badge {
+        display: none;
+    }
+
+    .navbar-profile-info {
+        display: none;
+    }
+}

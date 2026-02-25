@@ -1,0 +1,194 @@
+.list-product {
+    background: white;
+    border-radius: 20px;
+    padding: 36px 40px;
+    box-shadow: var(--shadow-card);
+    animation: fadeInUp 0.5s ease forwards;
+    width: 100%;
+}
+
+.list-product-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.list-product-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--brown);
+}
+
+.list-product-count {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, rgba(248, 200, 220, 0.2), rgba(245, 230, 211, 0.2));
+    border: 1px solid rgba(248, 200, 220, 0.4);
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #c47e9e;
+}
+
+.list-product-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 28px;
+}
+
+/* Table */
+.list-product-table {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(248, 200, 220, 0.2);
+}
+
+.listproduct-format-main {
+    display: grid;
+    grid-template-columns: 80px 2fr 1fr 1fr 1fr 60px;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+}
+
+/* Header row */
+.listproduct-format-main.header {
+    background: linear-gradient(135deg, #fdf0f5, #f5e6d3);
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+}
+
+/* Data rows */
+.listproduct-format {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-dark);
+    background: white;
+    transition: background 0.2s ease;
+}
+
+.listproduct-format:hover {
+    background: rgba(248, 200, 220, 0.06);
+}
+
+.listproduct-format:nth-child(even) {
+    background: rgba(245, 230, 211, 0.1);
+}
+
+.listproduct-format:nth-child(even):hover {
+    background: rgba(248, 200, 220, 0.1);
+}
+
+.listproduct-row-divider {
+    height: 1px;
+    background: rgba(248, 200, 220, 0.2);
+    margin: 0;
+    border: none;
+}
+
+/* Product image cell */
+.listproduct-product-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1.5px solid rgba(248, 200, 220, 0.3);
+}
+
+/* Category badge */
+.category-badge {
+    display: inline-flex;
+    padding: 3px 12px;
+    border-radius: 50px;
+    background: rgba(248, 200, 220, 0.15);
+    border: 1px solid rgba(248, 200, 220, 0.4);
+    font-size: 11px;
+    color: #c47e9e;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+/* Remove button */
+.listproduct-remove-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(248, 200, 220, 0.08);
+    border: 1px solid rgba(248, 200, 220, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: auto;
+}
+
+.listproduct-remove-btn:hover {
+    background: rgba(255, 100, 100, 0.1);
+    border-color: rgba(255, 100, 100, 0.3);
+}
+
+.listproduct-remove-icon {
+    width: 14px;
+    height: 14px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.listproduct-remove-btn:hover .listproduct-remove-icon {
+    opacity: 1;
+    filter: hue-rotate(180deg) saturate(300%);
+}
+
+.listproduct-allproducts {
+    overflow-y: auto;
+    max-height: 620px;
+}
+
+@media (max-width: 1024px) {
+    .list-product {
+        padding: 24px 20px;
+    }
+
+    .listproduct-format-main {
+        grid-template-columns: 60px 2fr 1fr 1fr 60px;
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
+    /* Hide category on medium screens */
+    .listproduct-format-main>*:nth-child(5),
+    .listproduct-format-main.header>*:nth-child(5) {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .listproduct-format-main {
+        grid-template-columns: 48px 1fr 1fr 40px;
+        gap: 8px;
+        font-size: 11px;
+    }
+
+    /* Hide old price on small */
+    .listproduct-format-main>*:nth-child(3),
+    .listproduct-format-main.header>*:nth-child(3) {
+        display: none;
+    }
+
+    .listproduct-product-icon {
+        width: 44px;
+        height: 44px;
+    }
+}

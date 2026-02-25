@@ -1,0 +1,184 @@
+.add-product {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(248, 200, 220, 0.3);
+    border-radius: 28px;
+    padding: 50px 60px;
+    max-width: 800px;
+    box-shadow: 0 20px 80px rgba(62, 44, 44, 0.05);
+    animation: fadeInUp 0.6s ease forwards;
+    margin: 0 auto;
+}
+
+.add-product-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--brown);
+    margin-bottom: 6px;
+}
+
+.add-product-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 32px;
+    letter-spacing: 0.05em;
+}
+
+.add-product-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(248, 200, 220, 0.6), transparent);
+    margin-bottom: 32px;
+}
+
+.add-product-itemfield {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 22px;
+}
+
+.add-product-itemfield label,
+.add-product-itemfield p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+}
+
+.add-product-itemfield input {
+    width: 100%;
+    height: 50px;
+    padding: 0 16px;
+    border: 1.5px solid rgba(248, 200, 220, 0.4);
+    border-radius: 12px;
+    background: rgba(248, 200, 220, 0.06);
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-product-itemfield input:focus {
+    border-color: #c47e9e;
+    box-shadow: 0 0 0 4px rgba(196, 126, 158, 0.1);
+    background: white;
+}
+
+.add-product-itemfield input::placeholder {
+    color: var(--text-light);
+}
+
+.add-product-price {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.add-product-selector {
+    height: 50px;
+    padding: 0 16px;
+    border: 1.5px solid rgba(248, 200, 220, 0.4);
+    border-radius: 12px;
+    background: rgba(248, 200, 220, 0.06);
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b89898' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+.add-product-selector:focus {
+    border-color: #c47e9e;
+    box-shadow: 0 0 0 4px rgba(196, 126, 158, 0.1);
+}
+
+/* Upload area */
+.add-product-upload-area {
+    border: 2px dashed rgba(248, 200, 220, 0.6);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(248, 200, 220, 0.04);
+    min-height: 160px;
+    text-align: center;
+}
+
+.add-product-upload-area:hover {
+    border-color: #c47e9e;
+    background: rgba(248, 200, 220, 0.1);
+}
+
+.add-product-thumnail-img {
+    height: 120px;
+    width: 120px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 2px solid rgba(248, 200, 220, 0.4);
+}
+
+.add-product-upload-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.add-product-upload-text strong {
+    color: #c47e9e;
+}
+
+.add-product-btn {
+    width: 100%;
+    height: 52px;
+    margin-top: 10px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #c47e9e, #e8a0c0);
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 28px rgba(196, 126, 158, 0.4);
+}
+
+.add-product-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(196, 126, 158, 0.5);
+}
+
+.add-product-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 800px) {
+    .add-product {
+        padding: 28px 24px;
+    }
+
+    .add-product-price {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

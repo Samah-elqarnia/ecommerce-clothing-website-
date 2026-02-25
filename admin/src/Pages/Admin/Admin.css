@@ -1,0 +1,21 @@
+.admin {
+    display: flex;
+    min-height: calc(100vh - 72px);
+    background: var(--bg);
+}
+
+.admin-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+@media (max-width: 800px) {
+    .admin {
+        flex-direction: column;
+    }
+
+    .admin-content {
+        padding: 24px 16px;
+    }
+}
