@@ -1,0 +1,46 @@
+.breadcrum {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 32px 80px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    background: transparent;
+}
+
+.breadcrum a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrum a:hover {
+    color: var(--brown);
+}
+
+.breadcrum img {
+    width: 6px;
+    opacity: 0.3;
+}
+
+.breadcrum span:last-child {
+    color: var(--brown);
+    font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+    .breadcrum {
+        padding: 24px 40px;
+    }
+}
+
+@media (max-width: 800px) {
+    .breadcrum {
+        padding: 20px 24px;
+        letter-spacing: 0.15em;
+    }
+}

@@ -1,0 +1,132 @@
+.newsletter {
+    margin: 80px 60px;
+    border-radius: 40px;
+    background: var(--brown);
+    padding: 100px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(62, 44, 44, 0.2);
+}
+
+.newsletter::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(248, 200, 220, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.newsletter::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    right: -150px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 230, 211, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.newsletter h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 400;
+    color: white;
+    letter-spacing: 0.02em;
+    z-index: 1;
+    line-height: 1.1;
+}
+
+.newsletter p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    z-index: 1;
+    max-width: 500px;
+    margin-top: -8px;
+}
+
+.newsletter-input-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 6px;
+    z-index: 1;
+    transition: all 0.4s ease;
+    width: 100%;
+    max-width: 600px;
+}
+
+.newsletter-input-box:focus-within {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--pink);
+    box-shadow: 0 0 30px rgba(248, 200, 220, 0.15);
+}
+
+.newsletter-input-box input {
+    flex: 1;
+    padding: 18px 32px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: white;
+}
+
+.newsletter-input-box input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.newsletter-input-box button {
+    padding: 16px 42px;
+    background: white;
+    color: var(--brown);
+    border: none;
+    border-radius: 100px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.newsletter-input-box button:hover {
+    background: var(--pink);
+    transform: translateX(-4px) scale(1.02);
+}
+
+@media (max-width: 800px) {
+    .newsletter {
+        margin: 40px 20px;
+        padding: 80px 24px;
+        border-radius: 24px;
+    }
+
+    .newsletter-input-box {
+        flex-direction: column;
+        border-radius: 20px;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .newsletter-input-box button {
+        width: 100%;
+    }
+}

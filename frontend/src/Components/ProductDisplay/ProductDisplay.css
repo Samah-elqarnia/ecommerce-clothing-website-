@@ -1,0 +1,252 @@
+.productdisplay {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    margin: 80px auto;
+    max-width: 1300px;
+    padding: 0 40px;
+    animation: fadeInUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Images Section */
+.productdisplay-left {
+    display: flex;
+    gap: 20px;
+}
+
+.productdisplay-img-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.productdisplay-img-list img {
+    width: 90px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--bg);
+    opacity: 0.6;
+}
+
+.productdisplay-img-list img:hover {
+    opacity: 1;
+    border-color: var(--pink-dark);
+}
+
+.productdisplay-img {
+    flex: 1;
+    border-radius: 32px;
+    overflow: hidden;
+    background: var(--bg);
+    box-shadow: var(--shadow-card);
+}
+
+.productdisplay-main-img {
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.productdisplay-img:hover .productdisplay-main-img {
+    transform: scale(1.05);
+}
+
+/* Info Section */
+.productdisplay-right {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.productdisplay-right-category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(248, 200, 220, 0.15);
+    border: 1px solid rgba(248, 200, 220, 0.3);
+    border-radius: 100px;
+    padding: 8px 20px;
+    margin-bottom: 24px;
+    width: fit-content;
+}
+
+.productdisplay-right-category-badge span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pink-dark);
+    font-weight: 600;
+}
+
+.productdisplay-right h1 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--brown);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.productdisplay-right-star {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.productdisplay-right-star img {
+    width: 16px;
+    opacity: 0.8;
+}
+
+.productdisplay-right-star p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: var(--text-light);
+    margin-left: 6px;
+    letter-spacing: 0.05em;
+}
+
+.produvtdisplay-right-prices {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.productdisplay-right-price-new {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--brown);
+}
+
+.productdisplay-right-price-old {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: var(--text-light);
+    text-decoration: line-through;
+}
+
+.productdisplay-right-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.productdisplay-right-size h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin-bottom: 20px;
+}
+
+.productdisplay-right-sizes {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.productdisplay-right-sizes div {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(62, 44, 44, 0.15);
+    background: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.productdisplay-right-sizes div:hover {
+    border-color: var(--brown);
+    transform: scale(1.1);
+}
+
+.productdisplay-right button {
+    width: 100%;
+    height: 64px;
+    background: var(--brown);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(62, 44, 44, 0.15);
+    margin-bottom: 32px;
+}
+
+.productdisplay-right button:hover {
+    transform: translateY(-4px);
+    background: #4e3838;
+    box-shadow: 0 15px 40px rgba(62, 44, 44, 0.25);
+}
+
+.productdisplay-right button.added {
+    background: #2e7d32;
+    box-shadow: 0 8px 28px rgba(46, 125, 50, 0.3);
+}
+
+.productdisplay-right-category {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+}
+
+.productdisplay-right-category span {
+    color: var(--brown);
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .productdisplay {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        margin: 40px auto;
+    }
+
+    .productdisplay-main-img {
+        height: 500px;
+    }
+}
+
+@media (max-width: 800px) {
+    .productdisplay-left {
+        flex-direction: column-reverse;
+    }
+
+    .productdisplay-img-list {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .productdisplay-main-img {
+        height: 400px;
+    }
+}

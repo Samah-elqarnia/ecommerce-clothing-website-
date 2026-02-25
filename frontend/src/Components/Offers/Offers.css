@@ -1,0 +1,99 @@
+.offers {
+    margin: 80px 60px;
+    border-radius: 40px;
+    background: var(--brown);
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(62, 44, 44, 0.2);
+}
+
+.offers-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.offers-tag {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 24px;
+}
+
+.offers-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 400;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.offers-title em {
+    font-style: italic;
+    color: var(--pink);
+}
+
+.offers-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.offers-btn {
+    display: inline-block;
+    padding: 18px 48px;
+    background: white;
+    color: var(--brown);
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.offers-btn:hover {
+    background: var(--pink);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(248, 200, 220, 0.4);
+}
+
+.offers-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(248, 200, 220, 0.15) 0%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+@media (max-width: 800px) {
+    .offers {
+        margin: 40px 20px;
+        padding: 80px 24px;
+        border-radius: 24px;
+    }
+
+    .offers-title {
+        font-size: 40px;
+    }
+}

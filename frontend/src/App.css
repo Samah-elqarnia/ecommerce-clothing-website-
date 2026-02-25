@@ -1,0 +1,6 @@
+/* Global styles moved to index.css */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

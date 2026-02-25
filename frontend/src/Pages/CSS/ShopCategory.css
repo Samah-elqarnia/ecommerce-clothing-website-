@@ -1,0 +1,231 @@
+.shop-category {
+    animation: fadeInUp 0.5s ease forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-hero {
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background: white;
+    border-bottom: 1px solid rgba(248, 200, 220, 0.2);
+}
+
+.category-hero-content {
+    z-index: 2;
+    padding: 0 24px;
+}
+
+.category-tag {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--pink-dark);
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+.category-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 500;
+    color: var(--brown);
+    margin-bottom: 12px;
+}
+
+.category-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--text-mid);
+    max-width: 500px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* Background shapes for categories */
+.category-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.cat-shape-1,
+.cat-shape-2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.35;
+    animation: floatShape 15s infinite alternate ease-in-out;
+}
+
+/* Women Theme */
+.women-theme .category-hero {
+    background: linear-gradient(135deg, #fffcfd 0%, #fdf5f8 100%);
+}
+
+.women-theme .cat-shape-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--pink);
+    top: -50px;
+    left: -50px;
+}
+
+.women-theme .cat-shape-2 {
+    width: 350px;
+    height: 350px;
+    background: var(--beige);
+    bottom: -100px;
+    right: -50px;
+}
+
+/* Men Theme */
+.men-theme .category-hero {
+    background: linear-gradient(135deg, #f9f7f4 0%, #f1efe9 100%);
+}
+
+.men-theme .cat-shape-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--beige-dark);
+    top: -50px;
+    right: -50px;
+}
+
+.men-theme .cat-shape-2 {
+    width: 350px;
+    height: 350px;
+    background: rgba(62, 44, 44, 0.08);
+    bottom: -100px;
+    left: -50px;
+}
+
+/* Kids Theme */
+.kids-theme .category-hero {
+    background: linear-gradient(135deg, #fcfdff 0%, #f5faff 100%);
+}
+
+.kids-theme .cat-shape-1 {
+    width: 300px;
+    height: 300px;
+    background: #e3f2fd;
+    top: -50px;
+    left: 10%;
+}
+
+.kids-theme .cat-shape-2 {
+    width: 350px;
+    height: 350px;
+    background: #fff9c4;
+    bottom: -100px;
+    right: 10%;
+}
+
+.shopcategory-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 80px;
+    background: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.shopcategory-filter-left p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: var(--text-mid);
+}
+
+.shopcategory-filter-left p span {
+    font-weight: 600;
+    color: var(--brown);
+}
+
+.shopcategory-sort {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-mid);
+    transition: all 0.3s ease;
+}
+
+.shopcategory-sort:hover {
+    border-color: var(--pink-dark);
+    color: var(--brown);
+}
+
+.shopcategory-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    padding: 60px 80px;
+    justify-content: center;
+}
+
+.shopcategory-loadmore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 80px;
+    width: fit-content;
+    padding: 16px 56px;
+    border-radius: 100px;
+    background: var(--brown);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(62, 44, 44, 0.15);
+}
+
+.shopcategory-loadmore:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(62, 44, 44, 0.25);
+    background: #4e3838;
+}
+
+@media (max-width: 1024px) {
+    .category-hero {
+        height: 320px;
+    }
+
+    .shopcategory-filter-bar {
+        padding: 20px 40px;
+    }
+
+    .shopcategory-products {
+        padding: 40px;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    .category-hero {
+        height: 280px;
+    }
+
+    .shopcategory-filter-bar {
+        padding: 16px 24px;
+    }
+
+    .shopcategory-products {
+        padding: 30px 20px;
+    }
+}
