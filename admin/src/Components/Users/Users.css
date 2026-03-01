@@ -1,37 +1,72 @@
 .users-container {
-    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .role-badge {
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+    width: fit-content;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
-.role-badge.admin {
+.role-badge.badge-admin {
     background: #e3f2fd;
     color: #1976d2;
 }
 
-.role-badge.customer {
+.role-badge.badge-customer {
     background: #f5f5f5;
     color: #616161;
+}
+
+.listproduct-format {
+    align-items: center;
+    border-bottom: 1px solid rgba(248, 200, 220, 0.2);
+}
+
+/* Center Role, Status, and Action columns */
+.listproduct-format-main>*:nth-child(4),
+.listproduct-format-main>*:nth-child(5),
+.listproduct-format-main>*:nth-child(6) {
+    justify-self: center;
+    text-align: center;
+}
+
+.listproduct-format p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text-dark);
+    font-size: 13px;
+    margin: 0;
 }
 
 .danger-btn {
     background: transparent;
     color: #d32f2f;
-    border: 1px solid #d32f2f;
-    border-radius: 4px;
-    padding: 6px 16px;
-    font-size: 13px;
+    border: 1px solid rgba(211, 47, 47, 0.4);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 10px;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .danger-btn:hover {
     background: #d32f2f;
     color: white;
+    box-shadow: 0 2px 8px rgba(211, 47, 47, 0.2);
 }

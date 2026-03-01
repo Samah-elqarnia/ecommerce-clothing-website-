@@ -9,11 +9,13 @@ import { Shop } from './Pages/Shop';
 import { Footer } from './Components/Footer/Footer';
 import { Profile } from './Pages/Profile';
 import { OrderHistory } from './Pages/OrderHistory';
+import { ScrollToTop } from './Components/ScrollToTop/ScrollToTop';
 
 function App() {
   return (
     <div >
       <BrowserRouter>
+        <ScrollToTop />
         <div className="bg-decor bg-decor-1"></div>
         <div className="bg-decor bg-decor-2"></div>
         <Navbar />

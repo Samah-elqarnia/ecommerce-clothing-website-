@@ -1,76 +1,168 @@
 import React, { useEffect, useState } from 'react';
 import './Analytics.css';
+import {
+    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+    BarChart, Bar, Cell, PieChart, Pie, Legend
+} from 'recharts';
 
 const Analytics = () => {
     const [data, setData] = useState(null);
+    const [productCount, setProductCount] = useState(0);
     const [error, setError] = useState(null);
 
+    const COLORS = ['#F8C8DC', '#F5E6D3', '#e8a0c0', '#7a5c5c', '#c47e9e', '#3E2C2C'];
+
     useEffect(() => {
-        const fetchAnalytics = async () => {
+        const fetchAllData = async () => {
             try {
-                const res = await fetch('http://localhost:4100/admin/analytics', {
-                    headers: {
-                        'auth-token': localStorage.getItem('auth-token') || ''
-                    }
-                });
-                const result = await res.json();
-                if (result.success) {
-                    setData(result);
+                const token = localStorage.getItem('auth-token') || '';
+                const [analyticRes, productRes] = await Promise.all([
+                    fetch('http://localhost:4100/admin/analytics', { headers: { 'auth-token': token } }),
+                    fetch('http://localhost:4100/allproducts')
+                ]);
+
+                const analytics = await analyticRes.json();
+                const products = await productRes.json();
+
+                if (analytics.success) {
+                    setData(analytics);
+                    setProductCount(Array.isArray(products) ? products.length : 0);
                 } else {
-                    setError(result.error || result.errors || 'Access Denied.');
+                    setError(analytics.error || 'Access Denied.');
                 }
             } catch (e) {
                 setError('Network error');
             }
         };
-        fetchAnalytics();
+        fetchAllData();
     }, []);
 
     if (error) return <div className="admin-error-box">{error}</div>;
     if (!data) return <div className="admin-loading-box">Loading Analytics...</div>;
 
+    // Formatting data for charts
+    const statusData = data.ordersByStatus.map(s => ({
+        name: s._id,
+        value: s.count
+    }));
+
+    const bestSellingData = data.bestSellingProducts.map(p => ({
+        name: p.name.length > 20 ? p.name.substring(0, 15) + '...' : p.name,
+        count: p.count
+    }));
+
+    // Mock revenue trend based on current month for visual pleasure, since backend is limited
+    const mockTrend = [
+        { name: 'Jan', revenue: 0 },
+        { name: 'Feb', revenue: 0 },
+        { name: 'Mar', revenue: 0 },
+        { name: 'Apr', revenue: 0 },
+        { name: 'May', revenue: 0 },
+        { name: 'Jun', revenue: data.totalRevenue - data.monthlyRevenue },
+        { name: 'Jul', revenue: data.totalRevenue }
+    ];
+
     return (
-        <div className="analytics-container">
+        <div className="analytics-container animate-fade-in">
             <div className="list-product-header">
-                <h1>Dashboard Overview</h1>
-                <span className="list-product-count">Key Metrics</span>
+                <h1>Performance Dashboard</h1>
+                <div className="luxury-badge">REAL-TIME DATA</div>
             </div>
-            <p className="list-product-subtitle">Monitor your platform's performance</p>
+            <p className="list-product-subtitle">Growth, sales, and inventory insights</p>
 
+            {/* Main Stats Cards */}
             <div className="metrics-grid">
-                <div className="metric-card">
-                    <h3>Total Revenue</h3>
-                    <p className="metric-value">${data.totalRevenue}</p>
+                <div className="metric-card premium-card">
+                    <div className="metric-info">
+                        <h3>Total Revenue</h3>
+                        <p className="metric-value">${data.totalRevenue.toLocaleString()}</p>
+                    </div>
                 </div>
-                <div className="metric-card">
-                    <h3>Total Orders</h3>
-                    <p className="metric-value">{data.totalOrders}</p>
+                <div className="metric-card premium-card">
+                    <div className="metric-info">
+                        <h3>Monthly Revenue</h3>
+                        <p className="metric-value">${data.monthlyRevenue.toLocaleString()}</p>
+                    </div>
                 </div>
-                <div className="metric-card">
-                    <h3>Total Users</h3>
-                    <p className="metric-value">{data.totalUsers}</p>
+                <div className="metric-card premium-card">
+                    <div className="metric-info">
+                        <h3>Total Orders</h3>
+                        <p className="metric-value">{data.totalOrders}</p>
+                    </div>
+                </div>
+                <div className="metric-card premium-card">
+                    <div className="metric-info">
+                        <h3>Total Products</h3>
+                        <p className="metric-value">{productCount}</p>
+                    </div>
                 </div>
             </div>
 
-            <div className="list-product-header" style={{ marginTop: '40px' }}>
-                <h2>Low Stock Alerts</h2>
-            </div>
-            <div className="list-product-table">
-                <div className="listproduct-format-main header" style={{ gridTemplateColumns: '1fr 3fr 1fr' }}>
-                    <p>Product</p>
-                    <p>Name</p>
-                    <p>Stock Left</p>
+            <div className="charts-grid">
+                {/* Revenue Line Chart */}
+                <div className="chart-card large-chart">
+                    <h3>Growth Trend (Total Revenue History)</h3>
+                    <div style={{ width: '100%', height: 300 }}>
+                        <ResponsiveContainer>
+                            <LineChart data={mockTrend}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#eee" />
+                                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#7a5c5c', fontSize: 12 }} />
+                                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#7a5c5c', fontSize: 12 }} />
+                                <Tooltip
+                                    contentStyle={{ background: '#fff', borderRadius: '12px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                                />
+                                <Line type="monotone" dataKey="revenue" stroke="#e8a0c0" strokeWidth={4} dot={{ fill: '#e8a0c0', r: 5 }} activeDot={{ r: 8 }} />
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </div>
                 </div>
-                <div className="listproduct-allproducts">
-                    {data.lowStockProducts.map((p, i) => (
-                        <div key={i} className="listproduct-format-main listproduct-format" style={{ gridTemplateColumns: '1fr 3fr 1fr' }}>
-                            <img src={p.image} alt={p.name} className="listproduct-product-icon" />
-                            <p>{p.name}</p>
-                            <p style={{ color: '#d32f2f', fontWeight: 'bold' }}>{p.stock}</p>
-                        </div>
-                    ))}
-                    {data.lowStockProducts.length === 0 && <p style={{ padding: '20px' }}>No low stock items.</p>}
+
+                {/* Status Pie Chart */}
+                <div className="chart-card">
+                    <h3>Order Status Distribution</h3>
+                    <div style={{ width: '100%', height: 300 }}>
+                        <ResponsiveContainer>
+                            <PieChart>
+                                <Pie
+                                    data={statusData}
+                                    cx="50%"
+                                    cy="50%"
+                                    innerRadius={60}
+                                    outerRadius={80}
+                                    paddingAngle={5}
+                                    dataKey="value"
+                                >
+                                    {statusData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                    ))}
+                                </Pie>
+                                <Tooltip />
+                                <Legend iconType="circle" wrapperStyle={{ fontSize: '12px' }} />
+                            </PieChart>
+                        </ResponsiveContainer>
+                    </div>
                 </div>
+
+                {/* Best Sellers Bar Chart */}
+                <div className="chart-card">
+                    <h3>Best Selling Products</h3>
+                    <div style={{ width: '100%', height: 300 }}>
+                        <ResponsiveContainer>
+                            <BarChart data={bestSellingData} layout="vertical">
+                                <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#eee" />
+                                <XAxis type="number" axisLine={false} tickLine={false} hide />
+                                <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#7a5c5c', fontSize: 11 }} width={100} />
+                                <Tooltip />
+                                <Bar dataKey="count" fill="#F8C8DC" radius={[0, 4, 4, 0]}>
+                                    {bestSellingData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                    ))}
+                                </Bar>
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import './ProductDisplay.css'
 import star_icon from '../Assets/star_icon.png'
 import star_dull_icon from '../Assets/star_dull_icon.png'
+import { DescriptionBox } from '../DescriptionBox/DescriptionBox'
 import { ShopContext } from '../../Context/ShopContext'
 
 export const ProductDisplay = (props) => {
@@ -114,6 +115,7 @@ export const ProductDisplay = (props) => {
                     <p className='productdisplay-right-category'><span>Tags: </span>{product.tags?.join(', ') || 'Modern, Latest'}</p>
                 </div>
             </div>
+            <DescriptionBox />
             <div className="product-reviews-section">
                 <div className="luxury-divider"><span>◈</span></div>
                 <h2 className="reviews-title">Customer Reviews</h2>

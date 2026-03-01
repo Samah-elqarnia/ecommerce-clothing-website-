@@ -7,13 +7,6 @@ export const Hero = () => {
   return (
     <div className='hero'>
       <div className="hero-content">
-        <div className="hero-tag-wrapper animate-fade-up">
-          <div className="hero-tag">
-            <span className="hero-tag-dot"></span>
-            <span>Est. 2024 • Luxury Boutique</span>
-          </div>
-        </div>
-
         <h1 className="hero-title animate-fade-up">
           Refined <em>Fashion</em><br />
           For The Modern Soul

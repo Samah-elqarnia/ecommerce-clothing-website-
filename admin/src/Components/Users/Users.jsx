@@ -50,7 +50,7 @@ const Users = () => {
             <p className="list-product-subtitle">Manage accounts and permissions</p>
 
             <div className="list-product-table">
-                <div className="listproduct-format-main header" style={{ gridTemplateColumns: '1fr 2fr 1.5fr 1fr 1fr 1fr' }}>
+                <div className="listproduct-format-main header" style={{ gridTemplateColumns: '60px 1fr 1.5fr 90px 90px 80px' }}>
                     <p>ID</p>
                     <p>Name</p>
                     <p>Email</p>
@@ -60,19 +60,16 @@ const Users = () => {
                 </div>
                 <div className="listproduct-allproducts">
                     {users.map((user, index) => (
-                        <React.Fragment key={index}>
-                            <div className="listproduct-format-main listproduct-format" style={{ gridTemplateColumns: '1fr 2fr 1.5fr 1fr 1fr 1fr' }}>
-                                <p style={{ fontFamily: 'monospace', fontSize: '11px' }}>{user._id.slice(-6)}</p>
-                                <p>{user.name}</p>
-                                <p>{user.email}</p>
-                                <span className={`role-badge ${user.role?.toLowerCase()}`}>{user.role || 'Customer'}</span>
-                                <span style={{ color: user.isDeleted ? 'red' : 'green' }}>{user.isDeleted ? 'Suspended' : 'Active'}</span>
-                                {user.role !== 'Admin' ? (
-                                    <button className="danger-btn" onClick={() => handleSoftDelete(user._id)}>Toggle</button>
-                                ) : <p>-</p>}
-                            </div>
-                            <hr />
-                        </React.Fragment>
+                        <div key={index} className="listproduct-format-main listproduct-format" style={{ gridTemplateColumns: '60px 1fr 1.5fr 90px 90px 80px' }}>
+                            <p style={{ fontFamily: 'monospace', fontSize: '11px' }}>{user._id.slice(-6)}</p>
+                            <p>{user.name}</p>
+                            <p>{user.email}</p>
+                            <span className={`role-badge badge-${user.role?.toLowerCase() || 'customer'}`}>{user.role || 'Customer'}</span>
+                            <span style={{ color: user.isDeleted ? 'red' : 'green' }}>{user.isDeleted ? 'Suspended' : 'Active'}</span>
+                            {user.role !== 'Admin' ? (
+                                <button className="danger-btn" onClick={() => handleSoftDelete(user._id)}>Toggle</button>
+                            ) : <p>-</p>}
+                        </div>
                     ))}
                 </div>
             </div>
