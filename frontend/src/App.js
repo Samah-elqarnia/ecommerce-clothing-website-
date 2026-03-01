@@ -7,6 +7,8 @@ import { LoginSignup } from './Pages/LoginSignup';
 import { Cart } from './Pages/Cart';
 import { Shop } from './Pages/Shop';
 import { Footer } from './Components/Footer/Footer';
+import { Profile } from './Pages/Profile';
+import { OrderHistory } from './Pages/OrderHistory';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           </Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/login" element={<LoginSignup />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/orders" element={<OrderHistory />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

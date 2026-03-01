@@ -96,7 +96,27 @@ const ShopContextProvider = (props) => {
         }
         return totalItem
     }
-    const contextValue = { getTotalCartItems, getTotalCartAmount, all_product, cartItems, addToCart, removeFromCart };
+    const placeOrder = async (orderData) => {
+        if (localStorage.getItem('auth-token')) {
+            const res = await fetch('http://localhost:4100/create-order', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'auth-token': `${localStorage.getItem('auth-token')}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderData),
+            });
+            const data = await res.json();
+            if (data.success) {
+                setCartItems(getDefaultCart()); // clear local cart
+            }
+            return data;
+        }
+        return { success: false, error: 'Not logged in' };
+    }
+
+    const contextValue = { getTotalCartItems, getTotalCartAmount, all_product, cartItems, addToCart, removeFromCart, placeOrder };
 
     return (
         <ShopContext.Provider value={contextValue}>

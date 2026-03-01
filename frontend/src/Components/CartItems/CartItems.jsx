@@ -2,9 +2,45 @@ import React, { useContext } from 'react'
 import './CartItems.css'
 import { ShopContext } from '../../Context/ShopContext'
 import remove_icon from '../Assets/cart_cross_icon.png'
+import { useNavigate } from 'react-router-dom';
 
 export const CartItems = () => {
-    const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
+    const { getTotalCartAmount, all_product, cartItems, removeFromCart, placeOrder } = useContext(ShopContext);
+    const navigate = useNavigate();
+
+    const handleCheckout = async () => {
+        if (!localStorage.getItem('auth-token')) {
+            navigate('/login');
+            return;
+        }
+
+        const items = [];
+        all_product.forEach(e => {
+            if (cartItems[e.id] > 0) {
+                items.push({
+                    productId: e._id,
+                    productNumId: e.id,
+                    quantity: cartItems[e.id],
+                    price: e.new_price
+                });
+            }
+        });
+
+        if (items.length === 0) return alert("Your cart is empty!");
+
+        const orderData = {
+            items,
+            totalAmount: getTotalCartAmount(),
+            shippingAddress: { country: "USA" },
+            paymentMethod: "Credit Card"
+        };
+        const result = await placeOrder(orderData);
+        if (result.success) {
+            navigate('/orders');
+        } else {
+            alert("Order failed!");
+        }
+    };
 
     return (
         <div className='cartitems'>
@@ -63,7 +99,7 @@ export const CartItems = () => {
                             <h3>${getTotalCartAmount()}</h3>
                         </div>
                     </div>
-                    <button>Proceed to Checkout</button>
+                    <button onClick={handleCheckout}>Proceed to Checkout</button>
                 </div>
 
                 <div className="cartitems-promocode">

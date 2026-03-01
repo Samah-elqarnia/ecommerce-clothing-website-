@@ -9,7 +9,26 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <span className="sidebar-section-label">Catalog</span>
+      <span className="sidebar-section-label">Dashboard</span>
+      <Link to='/' style={{ textDecoration: 'none' }}>
+        <div className={`sidebar-item ${location.pathname === '/' ? 'active' : ''}`}>
+          <div className="sidebar-icon">
+            <span style={{ fontSize: '20px' }}>📈</span>
+          </div>
+          <p>Analytics</p>
+        </div>
+      </Link>
+
+      <Link to='/orders' style={{ textDecoration: 'none' }}>
+        <div className={`sidebar-item ${location.pathname === '/orders' ? 'active' : ''}`}>
+          <div className="sidebar-icon">
+            <span style={{ fontSize: '20px' }}>📦</span>
+          </div>
+          <p>Orders</p>
+        </div>
+      </Link>
+
+      <span className="sidebar-section-label" style={{ marginTop: '20px' }}>Catalog</span>
 
       <Link to='/addproduct' style={{ textDecoration: 'none' }}>
         <div className={`sidebar-item ${location.pathname === '/addproduct' ? 'active' : ''}`}>
@@ -26,6 +45,17 @@ const Sidebar = () => {
             <img src={list_product_icon} alt="Product List" />
           </div>
           <p>Product List</p>
+        </div>
+      </Link>
+
+      <span className="sidebar-section-label" style={{ marginTop: '20px' }}>Platform</span>
+
+      <Link to='/users' style={{ textDecoration: 'none' }}>
+        <div className={`sidebar-item ${location.pathname === '/users' ? 'active' : ''}`}>
+          <div className="sidebar-icon">
+            <span style={{ fontSize: '20px' }}>👥</span>
+          </div>
+          <p>Users</p>
         </div>
       </Link>
     </div>

@@ -5,8 +5,38 @@ import dropdown_icon from '../Components/Assets/dropdown_icon.png'
 import { Item } from '../Components/Item/Item'
 
 export const ShopCategory = (props) => {
-  const { all_product } = useContext(ShopContext);
-  const filtered = all_product.filter(item => item.category === props.category);
+  const [products, setProducts] = React.useState([]);
+  const [total, setTotal] = React.useState(0);
+  const [page, setPage] = React.useState(1);
+  const [sort, setSort] = React.useState('');
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(`http://localhost:4100/products/search?category=${props.category}&page=${page}&limit=12&sort=${sort}`);
+        const data = await res.json();
+        if (data.success) {
+          if (page === 1) {
+            setProducts(data.products);
+          } else {
+            setProducts(prev => [...prev, ...data.products]);
+          }
+          setTotal(data.total);
+        }
+      } catch (e) {
+        console.error("Fetch products error", e);
+      }
+      setLoading(false);
+    };
+    fetchProducts();
+  }, [props.category, page, sort]);
+
+  // Reset page when category changes
+  React.useEffect(() => {
+    setPage(1);
+  }, [props.category]);
 
   const getCategoryDetails = () => {
     switch (props.category) {
@@ -35,19 +65,6 @@ export const ShopCategory = (props) => {
 
   const { title, subtitle, theme } = getCategoryDetails();
 
-  React.useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, [filtered]);
-
   return (
     <div className={`shop-category ${theme}`}>
       <div className="category-hero">
@@ -62,23 +79,34 @@ export const ShopCategory = (props) => {
         </div>
       </div>
 
-      <div className="shopcategory-filter-bar reveal">
+      <div className="shopcategory-filter-bar reveal active">
         <div className="shopcategory-filter-left">
-          <p>Showing <span>{filtered.length}</span> Products</p>
+          <p>Showing <span>{products.length}</span> of <span>{total}</span> Products</p>
         </div>
         <div className="shopcategory-sort">
-          Sort by <img src={dropdown_icon} alt="sort" />
+          <select value={sort} onChange={(e) => { setSort(e.target.value); setPage(1); }} style={{ WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none', background: 'transparent', border: 'none', outline: 'none', fontFamily: 'Poppins', color: 'var(--brown)', cursor: 'pointer', fontSize: '14px', marginRight: '5px' }}>
+            <option value="">Sort by</option>
+            <option value="price_asc">Price: Low to High</option>
+            <option value="price_desc">Price: High to Low</option>
+            <option value="newest">Newest</option>
+          </select>
+          <img src={dropdown_icon} alt="sort" style={{ pointerEvents: 'none' }} />
         </div>
       </div>
 
-      <div className="shopcategory-products reveal">
-        {filtered.map((item, i) => (
-          <Item key={i} id={item.id} name={item.name} image={item.image}
+      <div className="shopcategory-products reveal active">
+        {products.map((item, i) => (
+          <Item key={item._id || i} id={item.id} name={item.name} image={item.image}
             new_price={item.new_price} old_price={item.old_price} />
         ))}
+        {products.length === 0 && !loading && <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '40px' }}>No products found.</div>}
       </div>
 
-      <div className="shopcategory-loadmore reveal">Explore More</div>
+      {products.length < total && (
+        <div className="shopcategory-loadmore reveal active" onClick={() => setPage(prev => prev + 1)}>
+          {loading ? 'Loading...' : 'Explore More'}
+        </div>
+      )}
     </div>
   )
 }

@@ -1,0 +1,48 @@
+.orders-container {
+    width: 100%;
+}
+
+.status-select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #eee;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center;
+}
+
+.status-select.pending {
+    color: #f57c00;
+    border-color: #ffd54f;
+    background: #fff8e1;
+}
+
+.status-select.processing {
+    color: #1976d2;
+    border-color: #90caf9;
+    background: #e3f2fd;
+}
+
+.status-select.shipped {
+    color: #7b1fa2;
+    border-color: #ce93d8;
+    background: #f3e5f5;
+}
+
+.status-select.delivered {
+    color: #388e3c;
+    border-color: #a5d6a7;
+    background: #e8f5e9;
+}
+
+.status-select.cancelled {
+    color: #d32f2f;
+    border-color: #ef9a9a;
+    background: #ffebee;
+}

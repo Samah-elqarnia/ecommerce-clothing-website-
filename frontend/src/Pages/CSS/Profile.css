@@ -1,0 +1,109 @@
+.profile-container {
+    padding: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--bg);
+    min-height: 80vh;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.profile-card {
+    padding: 30px;
+}
+
+.profile-card h2 {
+    font-size: 20px;
+    color: var(--brown);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.email-status {
+    text-align: center;
+    color: #4db6ac;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    background: rgba(77, 182, 172, 0.1);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.input-group input {
+    padding: 12px 16px;
+    border: 1px solid rgba(248, 200, 220, 0.5);
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: var(--transition);
+}
+
+.input-group input:focus {
+    border-color: var(--pink-dark);
+}
+
+.profile-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-card button {
+    margin-top: 10px;
+}
+
+.success-msg {
+    color: #4db6ac;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.links-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: var(--bg);
+    border-radius: var(--radius);
+    color: var(--brown);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    border: 1px solid rgba(248, 200, 220, 0.3);
+}
+
+.profile-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+    border-color: var(--pink-dark);
+}
+
+.profile-link span {
+    color: var(--pink-dark);
+    font-size: 18px;
+}

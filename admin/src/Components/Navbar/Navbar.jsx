@@ -1,7 +1,7 @@
 import React from 'react'
 import './Navbar.css'
 
-const Navbar = () => {
+const Navbar = ({ setToken }) => {
   return (
     <div className="navbar">
       <div className="navbar-brand">
@@ -14,7 +14,16 @@ const Navbar = () => {
             <span className="navbar-profile-name">Admin</span>
             <span className="navbar-profile-role">Super Admin</span>
           </div>
-
+          <button
+            className="navbar-logout-btn"
+            onClick={() => {
+              localStorage.removeItem('auth-token');
+              setToken(null);
+              window.location.href = '/';
+            }}
+          >
+            Logout
+          </button>
         </div>
       </div>
     </div>

@@ -46,10 +46,14 @@ export const Navbar = () => {
         </li>
       </ul>
       <div className='nav-login-cart'>
-        {localStorage.getItem('auth-token')
-          ? <button onClick={() => { localStorage.removeItem('auth-token'); window.location.href = '/login' }}>Logout</button>
-          : <Link to='/login'><button>Login</button></Link>
-        }
+        {localStorage.getItem('auth-token') ? (
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+            <Link to="/profile"><button style={{ background: 'transparent', color: 'var(--brown)', border: '1px solid var(--brown)' }}>Profile</button></Link>
+            <button onClick={() => { localStorage.removeItem('auth-token'); window.location.href = '/login' }}>Logout</button>
+          </div>
+        ) : (
+          <Link to='/login'><button>Login</button></Link>
+        )}
         <div className="nav-cart-wrapper">
           <Link to='/cart'><img src={cart_icon} alt="Cart" /></Link>
           <div className="nav-cart-count">{getTotalCartItems()}</div>
