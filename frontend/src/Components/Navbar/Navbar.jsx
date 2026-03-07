@@ -27,8 +27,8 @@ export const Navbar = () => {
   return (
     <div className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className='nav-logo'>
-        <img src={logo} alt="SamahShop Logo" />
-        <p>SamahShop</p>
+        <img src={logo} alt="luxepedia Logo" />
+        <p>luxepedia</p>
       </div>
       <img className='nav-dropdown' onClick={dropdown_toggle} src={down} alt="menu" />
       <ul ref={menuRef} className="nav-menu">

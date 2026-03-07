@@ -46,7 +46,7 @@ export const LoginSignup = () => {
       <div className="loginsignup-container">
         <div className="loginsignup-brand">
           <span className="loginsignup-brand-dot"></span>
-          <span>SamahShop</span>
+          <span>luxepedia</span>
         </div>
         <h1>{state === 'Login' ? 'Welcome Back' : 'Create Account'}</h1>
         <p className="loginsignup-subtitle">
@@ -78,7 +78,7 @@ export const LoginSignup = () => {
 
         {state === 'Sign Up'
           ? <p className="loginsignup-login">Already have an account? <span onClick={() => setState('Login')}>Sign In</span></p>
-          : <p className="loginsignup-login">New to SamahShop? <span onClick={() => setState('Sign Up')}>Create Account</span></p>
+          : <p className="loginsignup-login">New to luxepedia? <span onClick={() => setState('Sign Up')}>Create Account</span></p>
         }
 
         <div className="loginsignup-agree">

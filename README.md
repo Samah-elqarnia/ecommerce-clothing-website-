@@ -1,4 +1,4 @@
-# SamahShop • Luxury Fashion E-commerce
+# luxepedia • Luxury Fashion E-commerce
 
 A modern, high-end e-commerce platform built with the MERN stack, featuring a premium typography-focused design, sophisticated animations, and a securely decoupled admin panel for catalog and platform management.
 

@@ -5,7 +5,7 @@ const Navbar = ({ setToken }) => {
   return (
     <div className="navbar">
       <div className="navbar-brand">
-        <span className="navbar-brand-name">SamahShop</span>
+        <span className="navbar-brand-name">luxepedia</span>
         <span className="navbar-badge">Admin</span>
       </div>
       <div className="navbar-right">

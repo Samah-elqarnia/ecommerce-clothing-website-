@@ -11,8 +11,8 @@ export const Footer = () => {
             <div className="footer-top">
                 <div className="footer-brand">
                     <div className="footer-logo">
-                        <img src={footer_logo} alt="SamahShop" />
-                        <p>SamahShop</p>
+                        <img src={footer_logo} alt="luxepedia" />
+                        <p>luxepedia</p>
                     </div>
                     <p className="footer-brand-desc">
                         Curated luxury fashion for those who appreciate elegance and quality craftsmanship.
@@ -56,7 +56,7 @@ export const Footer = () => {
             </div>
 
             <div className="footer-copyright">
-                <p>© 2025 SamahShop — All rights reserved</p>
+                <p>© 2025 luxepedia — All rights reserved</p>
                 <div className="footer-copyright-links">
                     <span>Privacy Policy</span>
                     <span>Terms of Use</span>
